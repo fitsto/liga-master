@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.reducer';
+import { OpenLoginRegisterAction } from '../../store/actions/index';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stor: Store<AppState>) { }
 
   ngOnInit() {
   }
 
+  loginRegister() {
+    this.stor.dispatch(new OpenLoginRegisterAction());
+  }
 }
