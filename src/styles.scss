@@ -1,0 +1,20 @@
+@import "buttons";
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    overflow: hidden;
+}
+
+app-login-register {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow-y: auto;
+    top: 0;
+    position: absolute;
+}
+
+.modal-open {
+    overflow: hidden!important;
+}

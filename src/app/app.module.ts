@@ -15,6 +15,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { appReducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { effectsArr } from './store/effects';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AngularFirestoreModule,
     AngularFireAuthModule,
     StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot( effectsArr ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],

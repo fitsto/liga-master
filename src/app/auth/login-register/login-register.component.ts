@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CloseLoginRegisterAction } from '../../store/actions/index';
+import { CloseLoginRegister } from '../../store/actions/index';
 import { AppState } from '../../store/app.reducer';
+import { CrearUsuario } from '../../store/actions/usuario.actions';
 
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
-  styleUrls: ['./login-register.component.css']
+  styleUrls: ['./login-register.component.scss']
 })
 export class LoginRegisterComponent implements OnInit {
 
@@ -20,10 +21,10 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   closeLoginRegister() {
-    this.store.dispatch(new CloseLoginRegisterAction());
+    this.store.dispatch(new CloseLoginRegister());
   }
 
-  onSubmitRegister(values) {
-    console.log(values);
+  onSubmitRegister(form) {
+    this.store.dispatch( new CrearUsuario(form));
   }
 }
