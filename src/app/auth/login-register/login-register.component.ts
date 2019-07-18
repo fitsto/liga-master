@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CloseLoginRegister } from '../../store/actions/index';
+import { CloseLoginRegister, CrearUsuario, CargarUsuario } from '../../store/actions/index';
 import { AppState } from '../../store/app.reducer';
-import { CrearUsuario } from '../../store/actions/usuario.actions';
 
 @Component({
   selector: 'app-login-register',
@@ -26,5 +25,9 @@ export class LoginRegisterComponent implements OnInit {
 
   onSubmitRegister(form) {
     this.store.dispatch( new CrearUsuario(form));
+  }
+
+  onSubmitLogin(form) {
+    this.store.dispatch( new CargarUsuario(form));
   }
 }

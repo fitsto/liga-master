@@ -1,7 +1,8 @@
 import * as fromUsuario from '../actions/usuario.actions';
+import { User } from '../../auth/user.model';
 
 export interface UsuarioState {
-    user: any;
+    user: User;
     loaded: boolean;
     loading: boolean;
     error: any;
@@ -63,6 +64,12 @@ export function usuarioReducer( state = estadoInicial, action: fromUsuario.usuar
                 loaded: false,
                 loading: false,
                 error: action.payload
+            };
+
+        case fromUsuario.CERRAR_SESION_USUARIO:
+            return {
+                ...state,
+                user: null
             };
 
         default:

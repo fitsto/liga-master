@@ -8,6 +8,8 @@ export const CARGAR_USUARIO = '[USUARIO] Cargar Usuario';
 export const CARGAR_USUARIO_FAIL = '[USUARIO] Cargar Usuario FAIL';
 export const CARGAR_USUARIO_SUCCESS = '[USUARIO] Cargar Usuario SUCCESS';
 
+export const CERRAR_SESION_USUARIO = '[USUARIO] cerrar sesion Usuario ';
+
 export class CrearUsuario implements Action {
     readonly type = CREAR_USUARIO;
 
@@ -44,6 +46,10 @@ export class CargarUsuarioSuccess implements Action {
     constructor( public usuario: any ) {}
 }
 
+export class CerrarSesionUsuario implements Action {
+    readonly type = CERRAR_SESION_USUARIO;
+}
+
 
 
 export type usuarioAcciones =  CrearUsuario |
@@ -51,4 +57,5 @@ export type usuarioAcciones =  CrearUsuario |
                         CrearUsuarioSuccess |
                         CargarUsuario |
                         CargarUsuarioFail |
-                        CargarUsuarioSuccess;
+                        CargarUsuarioSuccess |
+                        CerrarSesionUsuario;

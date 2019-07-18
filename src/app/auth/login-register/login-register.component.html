@@ -10,23 +10,23 @@
                 <div class="modal-account__item">
 
                     <!-- Login Form -->
-                    <form action="#" class="modal-form">
-                        <h5>Login to your account</h5>
+                    <form (ngSubmit)="onSubmitLogin( fLogin.value )" class="modal-form" #fLogin="ngForm">
+                        <h5>Ingresa a tu cuenta</h5>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter your email address...">
+                            <input type="email" class="form-control" placeholder="Ingrese su email..." ngModel name="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Enter your password...">
+                            <input type="password" class="form-control" placeholder="Ingrese su password..." ngModel name="password" required>
                         </div>
                         <div class="form-group form-group--pass-reminder">
-                            <label class="checkbox checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1" checked> Remember Me
-            <span class="checkbox-indicator"></span>
-          </label>
+                            <!-- <label class="checkbox checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1" checked> Remember Me
+                                <span class="checkbox-indicator"></span>
+                            </label> -->
                             <a href="#">Forgot your password?</a>
                         </div>
                         <div class="form-group form-group--submit">
-                            <input type="submit" value="Entrar a tu cuenta" class="btn-primary-inverse btn-block">
+                            <input [disabled]="fLogin.invalid" type="submit" value="Entrar a tu cuenta" class="btn-primary-inverse btn-block">
                         </div>
                         <div class="modal-form--social">
                             <h6>or Login with your social profile:</h6>
@@ -56,10 +56,10 @@
                             <input type="email" class="form-control" placeholder="Ingrese su Email..." ngModel name="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Ingrese su password..." ngModel name="password" required>
+                            <input type="text" class="form-control" placeholder="Ingrese su nombre..." ngModel name="nombre" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Repetir su password..." ngModel name="confirmPassword" required>
+                            <input type="password" class="form-control" placeholder="Repetir su password..." ngModel name="password" required>
                         </div>
                         <div class="form-group form-group--submit">
                             <input [disabled]="fRegister.invalid" type="submit" value="crear cuenta" class="btn btn-primary btn-block">

@@ -14,21 +14,20 @@ export class UsuarioEffects {
         public authService: AuthService
     ) {}
 
-    login$ = createEffect(() =>
+    register$ = createEffect(() =>
         this.actions$.pipe(
             ofType(usuarioActions.CREAR_USUARIO),
             exhaustMap((action: any) => {
                 const email = action.form.email;
                 const password = action.form.password;
-                const nombres = '';
-                const apellidos = '';
+                const nombre = action.form.nombre;
                 console.log(email, password);
-                return  this.authService.crearUsuario(email, password, '', '').pipe(
+                return  this.authService.crearUsuario(email, password, nombre).pipe(
                     map( (user: any) => {
-                        console.log(user);
                         return new usuarioActions.CrearUsuarioSuccess({
                             uid: user.uid,
-                            email: user.email
+                            email: user.email,
+                            nombre: user.nombre
                         });
                     }),
                     catchError(error => of( new usuarioActions.CrearUsuarioFail(error)))
@@ -38,5 +37,39 @@ export class UsuarioEffects {
         )
     );
 
+    login$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(usuarioActions.CARGAR_USUARIO),
+            exhaustMap((action: any) => {
+                const email = action.form.email;
+                const password = action.form.password;
+                console.log(email, password);
+                return  this.authService.login(email, password).pipe(
+                    map( (user: any) => {
+                        return new usuarioActions.CargarUsuarioSuccess({
+                            uid: user.uid,
+                            email: user.email,
+                            nombre: user.nombre
+                        });
+                    }),
+                    catchError(error => of( new usuarioActions.CargarUsuarioFail(error)))
+                  );
+                }
+            )
+        )
+    );
 
+    logout$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(usuarioActions.CERRAR_SESION_USUARIO),
+            exhaustMap(() => {
+                return  this.authService.logout().pipe(
+                    map( (user: any) => {
+                        return new usuarioActions.CerrarSesionUsuario();
+                    })
+                  );
+                }
+            )
+        )
+    );
 }

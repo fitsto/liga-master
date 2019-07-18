@@ -19,8 +19,9 @@
 
                 <!-- Account Navigation -->
                 <ul class="nav-account">
-                    <li class="nav-account__item"><a href="#" data-toggle="modal" data-target="#modal-login-register" (click)="loginRegister()">Tu cuenta</a></li>
-                    <li class="nav-account__item nav-account__item--logout"><a href="#">Logout</a></li>
+                    <li *ngIf="!usuario" class="nav-account__item"><a href="#" data-toggle="modal" data-target="#modal-login-register" (click)="loginRegister($event)">Tu cuenta</a></li>
+                    <li *ngIf="usuario" class="nav-account__item"><a href="" (click)="miCuenta($event)">{{usuario.nombre}}</a></li>
+                    <li class="nav-account__item nav-account__item--logout" *ngIf="usuario" (click)="logout($event)"><a href="#">Logout</a></li>
                 </ul>
                 <!-- Account Navigation / End -->
 
